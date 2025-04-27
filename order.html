@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order - Jessie's Baby Cakes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Jessie's Baby Cakes</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="order.html">Order</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="order-container">
+            
+            <!-- Left side: Flavor Lists -->
+            <div class="flavor-list">
+                <h2>Cake Flavors</h2>
+                <ul>
+                    <li>Vanilla</li>
+                    <li>Chocolate</li>
+                    <li>Cookies and Cream</li>
+                    <li>Peanut Butter</li>
+                    <li>Lemon</li>
+                    <li>Carrot Cake</li>
+                    <li>Red Velvet</li>
+                    <li>Key Lime Pie</li>
+                    <li>Funfetti</li>
+                </ul>
+
+                <h2>Frosting Flavors</h2>
+                <ul>
+                    <li>Vanilla</li>
+                    <li>Chocolate</li>
+                    <li>Cookies and Cream</li>
+                    <li>Peanut Butter</li>
+                    <li>Raspberry</li>
+                    <li>Blueberry</li>
+                    <li>Cream Cheese</li>
+                    <li>Marshmallow</li>
+                    <li>Strawberry</li>
+                    <li>Caramel</li>
+                    <li>Whipped Cream</li>
+                </ul>
+            </div>
+
+            <!-- Right side: Order Form -->
+            <div class="form-section">
+                <h2>Place an Order</h2>
+                <form action="https://formspree.io/f/YOUR-FORM-ID-HERE" method="POST" enctype="multipart/form-data">
+                    <input type="email" name="email" placeholder="Email" required><br><br>
+                    <input type="text" name="phone" placeholder="Phone Number" required><br><br>
+                    <input type="date" name="event-date" placeholder="Date of Event" required><br><br>
+
+                    <select name="item-type" required>
+                        <option value="">Select Item Type</option>
+                        <option value="Cake">Cake</option>
+                        <option value="Cupcakes">Cupcakes (Minimum 1 dozen)</option>
+                        <option value="Pull Apart Cupcakes">Pull Apart Cupcakes (Minimum 1 dozen)</option>
+                        <option value="Cakepops">Cakepops (Minimum 1 dozen)</option>
+                    </select><br><br>
+
+                    <select name="cake-size">
+                        <option value="">Select Cake Size (Only if ordering Cake)</option>
+                        <option value="6 inch">6 inch</option>
+                        <option value="8 inch">8 inch</option>
+                        <option value="8 inch Heart">8 inch Heart Cake</option>
+                    </select><br><br>
+
+                    <input type="text" name="flavor" placeholder="Flavor Requested" required><br><br>
+                    <input type="number" name="quantity" placeholder="Quantity" required><br><br>
+                    <input type="file" name="image" accept="image/*"><br><br>
+
+                    <textarea name="order-details" rows="5" placeholder="Additional Order Details..." required></textarea><br><br>
+
+                    <input type="hidden" name="_next" value="thankyou.html">
+
+                    <button type="submit">Submit Order Request</button>
+                </form>
+
+                <div class="allergy-warning">
+                    <h3>Allergy Disclaimer</h3>
+                    <p>
+                        Please note: All products are made in a home kitchen that may handle allergens such as nuts, dairy, gluten, and eggs.  
+                        Cross-contamination may occur. It is the customer's responsibility to inform themselves of any allergens before placing an order.  
+                        Jessie's Baby Cakes is not responsible for any allergic reactions. Thank you for understanding!
+                    </p>
+                </div>
+            </div>
+
+        </section> <!-- End order-container -->
+    </main>
+
+    <footer>
+        <p>© 2025 Jessie's Baby Cakes. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+
+
