@@ -3,7 +3,10 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #ffffff;
+    background-color: #f9a8d4; /* light pink */
+    background-image: radial-gradient(#ec4899 10%, transparent 10%);
+    background-size: 40px 40px;
+    background-repeat: repeat;
     color: #333333;
     margin: 0;
     padding: 0;
