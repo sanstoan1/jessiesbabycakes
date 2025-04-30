@@ -3,10 +3,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f9a8d4; /* light pink */
-    background-image: radial-gradient(#ec4899 10%, transparent 10%);
-    background-size: 40px 40px;
-    background-repeat: repeat;
+    background-color: #ffffff;
     color: #333333;
     margin: 0;
     padding: 0;
@@ -15,12 +12,14 @@ body {
 
 header {
     background-color: #ffe4e1;
-    background-image: radial-gradient(white 10%, transparent 11%);
-    background-size: 20px 20px;
+    background-image: radial-gradient(#ec4899 15%, transparent 16%);
+    background-size: 50px 50px;
+    background-repeat: repeat;
     padding: 20px;
     color: #333333;
     text-align: center;
 }
+
 
 header h1 {
     font-family: 'Rouge Script', cursive;
