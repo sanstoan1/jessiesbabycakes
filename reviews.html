@@ -40,18 +40,138 @@
     </footer>
 
     <script>
+    // Default reviews that will always be shown
+    const defaultReviews = [
+        { name: 'Emily R.', text: 'The cupcakes were absolutely adorable and delicious!' },
+        { name: 'Jason M.', text: 'My daughter loved her birthday cake. Highly recommend!' }
+    ];
+    
+    // Variable to store all reviews (default + user submitted)
+    let allReviews = [];
+    
+    // Function to set a cookie
+    function setCookie(name, value, days) {
+        let expires = "";
+        if (days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
+    }
+    
+    // Function to get a cookie
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+        }
+        return null;
+    }
+    
+    // Check if storage is available (localStorage or cookies)
+    function isStorageAvailable() {
+        try {
+            // Try localStorage first
+            const test = 'test';
+            localStorage.setItem(test, test);
+            localStorage.removeItem(test);
+            return 'localStorage';
+        } catch(e) {
+            // Fall back to cookies
+            try {
+                setCookie('test', 'test', 1);
+                if (getCookie('test') === 'test') {
+                    return 'cookies';
+                }
+            } catch(e) {
+                // Nothing works
+            }
+            return 'none';
+        }
+    }
+    
+    // Function to save reviews
+    function saveReviews(reviews) {
+        const storageType = isStorageAvailable();
+        
+        if (storageType === 'localStorage') {
+            localStorage.setItem('babyReviews', JSON.stringify(reviews));
+        } else if (storageType === 'cookies') {
+            setCookie('babyReviews', JSON.stringify(reviews), 30); // Save for 30 days
+        }
+        
+        // Always update our in-memory collection
+        allReviews = reviews;
+    }
+    
+    // Function to load reviews
+    function loadReviews() {
+        const reviewList = document.getElementById('review-list');
+        const storageType = isStorageAvailable();
+        
+        // Initialize with default reviews
+        allReviews = [...defaultReviews];
+        
+        // Try to get saved reviews
+        let savedReviews = null;
+        
+        if (storageType === 'localStorage') {
+            savedReviews = localStorage.getItem('babyReviews');
+        } else if (storageType === 'cookies') {
+            savedReviews = getCookie('babyReviews');
+        }
+        
+        // If we have saved reviews, use them instead of defaults
+        if (savedReviews) {
+            try {
+                const parsedReviews = JSON.parse(savedReviews);
+                if (Array.isArray(parsedReviews) && parsedReviews.length > 0) {
+                    allReviews = parsedReviews;
+                }
+            } catch (e) {
+                console.error('Error parsing saved reviews:', e);
+            }
+        }
+        
+        // Clear existing reviews
+        reviewList.innerHTML = '';
+        
+        // Add all reviews to the page
+        allReviews.forEach(review => {
+            const newReview = document.createElement('p');
+            newReview.innerHTML = `<strong>${review.name}:</strong> ${review.text}`;
+            reviewList.appendChild(newReview);
+        });
+    }
+    
+    // Load reviews when page loads
+    window.addEventListener('load', loadReviews);
+    
+    // Handle form submission
     document.getElementById('review-form').addEventListener('submit', function (e) {
         e.preventDefault();
         const name = document.getElementById('name').value.trim();
         const review = document.getElementById('review').value.trim();
 
         if (name && review) {
-            const reviewList = document.getElementById('review-list');
-            const newReview = document.createElement('p');
-            newReview.innerHTML = `<strong>${name}:</strong> ${review}`;
-            reviewList.appendChild(newReview);
-
+            // Add new review to our collection
+            allReviews.push({ name: name, text: review });
+            
+            // Save reviews
+            saveReviews(allReviews);
+            
+            // Update the display
+            loadReviews();
+            
+            // Reset the form
             document.getElementById('review-form').reset();
+            
+            // Scroll to show the new review
+            window.scrollTo(0, document.querySelector('.reviews').offsetTop - 20);
         }
     });
     </script>
