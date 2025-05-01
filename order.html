@@ -56,7 +56,8 @@
                 <form action="https://formspree.io/f/xldbdzev" method="POST">
                     <input type="email" name="email" placeholder="Email" required><br><br>
                     <input type="text" name="phone" placeholder="Phone Number" required><br><br>
-                    <input type="date" name="event-date" placeholder="Date of Event" required><br><br>
+                    <label for="event-date">Date of Event:</label>
+                    <input type="date" id="event-date" name="event-date" required><br><br>
 
                     <select name="item-type" required>
                         <option value="">Select Item Type</option>
@@ -82,6 +83,10 @@
 
                     <button type="submit">Submit Order Request</button>
                 </form>
+
+                <div class="order-notice">
+                    <p><strong>Important:</strong> Orders must be placed at least a week before event date.</p>
+                </div>
 
                 <div class="allergy-warning">
                     <h3>Allergy Disclaimer</h3>
