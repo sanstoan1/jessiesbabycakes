@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reviews - Jessie's Baby Cakes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Jessie's Baby Cakes</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="order.html">Order</a>
+            <a href="reviews.html">Reviews</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="review-section">
+            <h2>Customer Reviews ❤️</h2>
+
+            <div class="reviews" id="review-list">
+                <p><strong>Emily R.:</strong> The cupcakes were absolutely adorable and delicious!</p>
+                <p><strong>Jason M.:</strong> My daughter loved her birthday cake. Highly recommend!</p>
+            </div>
+
+            <h3>Leave a Review</h3>
+            <form id="review-form">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <textarea id="review" placeholder="Your Review" required></textarea>
+                <button type="submit">Submit Review</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Jessie's Baby Cakes. All rights reserved.</p>
+    </footer>
+
+    <script>
+    document.getElementById('review-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const review = document.getElementById('review').value.trim();
+
+        if (name && review) {
+            const reviewList = document.getElementById('review-list');
+            const newReview = document.createElement('p');
+            newReview.innerHTML = `<strong>${name}:</strong> ${review}`;
+            reviewList.appendChild(newReview);
+
+            document.getElementById('review-form').reset();
+        }
+    });
+    </script>
+</body>
+</html>
