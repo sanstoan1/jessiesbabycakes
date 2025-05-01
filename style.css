@@ -136,6 +136,22 @@ footer {
     text-align: center;
 }
 
+/* Order Notice Box */
+.order-notice {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #ffecb3;
+    border-radius: 8px;
+    max-width: 600px;
+    text-align: center;
+    border-left: 4px solid #ff9800;
+}
+
+.order-notice p {
+    margin: 0;
+    font-weight: 500;
+}
+
 /* Order Page Layout */
 .order-container {
     display: flex;
@@ -223,3 +239,4 @@ footer {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
