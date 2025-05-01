@@ -191,6 +191,11 @@ footer {
         padding: 20px;
     }
     
+    /* Reviews section */
+    .reviews {
+        padding: 15px;
+    }
+    
     /* Header and navigation */
     header h1 {
         font-size: 40px;
@@ -302,10 +307,26 @@ footer {
 }
 
 .reviews {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     text-align: left;
     max-width: 600px;
-    margin: auto;
+    margin: 0 auto 30px;
+    background-color: #fff8fa;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.reviews p {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ffe4e1;
+}
+
+.reviews p:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
 }
 
 #review-form {
@@ -332,3 +353,4 @@ footer {
     border-radius: 5px;
     cursor: pointer;
 }
+
